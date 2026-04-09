@@ -3,7 +3,6 @@ const lines = [
   "who_am_i",
   "cybersec_student",
   "ethical_hacker",
-  "cloud_security",
   "interner"
 ];
 
@@ -57,7 +56,6 @@ document.getElementById("navToggle").addEventListener("click", () => {
   document.getElementById("navLinks").classList.toggle("open");
 });
 
-// Close mobile nav on link click
 navLinks.forEach(link => {
   link.addEventListener("click", () => {
     document.getElementById("navLinks").classList.remove("open");
@@ -81,8 +79,3 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 fadeEls.forEach(el => observer.observe(el));
-
-
-    this.reset();
-  }, 3000);
-});
