@@ -1,6 +1,6 @@
 // ===== TYPEWRITER EFFECT =====
 const lines = [
-  "whoami",
+  "who_am_i",
   "cybersec_student",
   "ethical_hacker",
   "cloud_security",
