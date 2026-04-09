@@ -82,19 +82,7 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeEls.forEach(el => observer.observe(el));
 
-// ===== CONTACT FORM =====
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const btn = this.querySelector("button[type=submit]");
-  btn.textContent = "MESSAGE SENT ✓";
-  btn.style.borderColor = "#00ff88";
-  btn.style.color = "#00ff88";
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = "SEND MESSAGE ›";
-    btn.disabled = false;
-    btn.style.borderColor = "";
-    btn.style.color = "";
+
     this.reset();
   }, 3000);
 });
