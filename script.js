@@ -3,7 +3,7 @@ const lines = [
   "who_am_i",
   "cybersec_student",
   "ethical_hacker",
-  "interner"
+  "intern"
 ];
 
 let lineIndex = 0, charIndex = 0, deleting = false;
