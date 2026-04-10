@@ -79,3 +79,16 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 fadeEls.forEach(el => observer.observe(el));
+
+// ===== FOOTER YEAR =====
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+// ===== FOOTER UPTIME COUNTER =====
+const start = Date.now();
+setInterval(() => {
+  const diff = Math.floor((Date.now() - start) / 1000);
+  const h = String(Math.floor(diff / 3600)).padStart(2, '0');
+  const m = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+  const s = String(diff % 60).padStart(2, '0');
+  document.getElementById('uptime').textContent = `${h}:${m}:${s}`;
+}, 1000);
