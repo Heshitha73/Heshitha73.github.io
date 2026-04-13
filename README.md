@@ -29,11 +29,11 @@ using pure HTML, CSS, and JavaScript — no frameworks required.
 
 ## 🗂️ Project Structure
 my-portfolio/
-├── index.html       # Main HTML structure
-├── style.css        # All styling and animations
-├── script.js        # JavaScript interactions
-├── photo.jpg        # Profile photo
-└── README.md        # Project documentation
+ - index.html       # Main HTML structure
+ -  style.css       # All styling and animations
+ -  cript.js        # JavaScript interactions
+ -  photo.jpg       # Profile photo
+ -  README.md       # Project documentation
 
 ---
 
