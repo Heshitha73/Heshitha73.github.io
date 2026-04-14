@@ -92,3 +92,20 @@ setInterval(() => {
   const s = String(diff % 60).padStart(2, '0');
   document.getElementById('uptime').textContent = `${h}:${m}:${s}`;
 }, 1000);
+
+// ===== LANGUAGE BAR ANIMATION =====
+const langFills = document.querySelectorAll('.lang-fill');
+
+const langObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target;
+      const width = target.style.width;
+      target.style.width = '0%';
+      setTimeout(() => { target.style.width = width; }, 100);
+      langObserver.unobserve(target);
+    }
+  });
+}, { threshold: 0.3 });
+
+langFills.forEach(el => langObserver.observe(el));
