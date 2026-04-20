@@ -18,7 +18,6 @@ using pure HTML, CSS, and JavaScript — no frameworks required.
 - Terminal-style dark theme with green neon accents
 - Typewriter animation in the hero section
 - Responsive design — works on all screen sizes
-- Dark mode / Light mode toggle with saved preference
 - Animated profile photo with glowing ring frame
 - Scroll fade-in animations
 - Working contact form via FormSubmit
