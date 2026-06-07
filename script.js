@@ -1,111 +1,172 @@
-// ===== TYPEWRITER EFFECT =====
-const lines = [
-  "who_am_i",
-  "cybersec_student",
-  "ethical_hacker",
-  "intern"
-];
+/* ===== CUSTOM CURSOR ===== */
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
 
-let lineIndex = 0, charIndex = 0, deleting = false;
-const typeEl = document.getElementById("typewriter");
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .bento-card, .proj-card, .cert-row, .contact-item').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+});
+
+/* ===== SCROLL PROGRESS ===== */
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  const pct = (window.scrollY / total) * 100;
+  progressBar.style.width = pct + '%';
+});
+
+/* ===== NAVBAR ===== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ===== ACTIVE NAV ===== */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 140) current = sec.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+});
+
+/* ===== MOBILE MENU ===== */
+const hamburger = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+document.querySelectorAll('.mm-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ===== THEME TOGGLE ===== */
+const themeBtn = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+  themeIcon.textContent = '🌙';
+}
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  themeIcon.textContent = isLight ? '🌙' : '☀️';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+/* ===== TYPEWRITER ===== */
+const lines = ['whoami',  'cybersec_student', 'ethical_hacker', 'intern'];
+let li = 0, ci = 0, deleting = false;
+const twEl = document.getElementById('tw');
 
 function type() {
-  const current = lines[lineIndex];
+  if (!twEl) return;
+  const cur = lines[li];
   if (!deleting) {
-    typeEl.textContent = current.substring(0, charIndex + 1);
-    charIndex++;
-    if (charIndex === current.length) {
-      deleting = true;
-      setTimeout(type, 1800);
-      return;
-    }
+    twEl.textContent = cur.substring(0, ci + 1);
+    ci++;
+    if (ci === cur.length) { deleting = true; setTimeout(type, 1800); return; }
   } else {
-    typeEl.textContent = current.substring(0, charIndex - 1);
-    charIndex--;
-    if (charIndex === 0) {
-      deleting = false;
-      lineIndex = (lineIndex + 1) % lines.length;
-    }
+    twEl.textContent = cur.substring(0, ci - 1);
+    ci--;
+    if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
   }
-  setTimeout(type, deleting ? 60 : 110);
+  setTimeout(type, deleting ? 55 : 100);
 }
 type();
 
-// ===== NAVBAR SCROLL =====
-const navbar = document.getElementById("navbar");
-window.addEventListener("scroll", () => {
-  navbar.classList.toggle("scrolled", window.scrollY > 60);
-});
-
-// ===== ACTIVE NAV LINK =====
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+/* ===== MAGNETIC BUTTONS ===== */
+document.querySelectorAll('.mag-btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    btn.style.transform = `translate(${dx * 0.2}px, ${dy * 0.2}px)`;
   });
-  navLinks.forEach(link => {
-    link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
   });
 });
 
-// ===== MOBILE NAV TOGGLE =====
-document.getElementById("navToggle").addEventListener("click", () => {
-  document.getElementById("navLinks").classList.toggle("open");
-});
-
-navLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    document.getElementById("navLinks").classList.remove("open");
-  });
-});
-
-// ===== FADE-IN ON SCROLL =====
-const fadeEls = document.querySelectorAll(
-  ".skill-card, .cert-card, .project-card, .timeline-item, .about-grid, .contact-grid"
-);
-
-fadeEls.forEach(el => el.classList.add("fade-in"));
-
-const observer = new IntersectionObserver((entries) => {
+/* ===== REVEAL ON SCROLL ===== */
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add("visible"), i * 80);
-      observer.unobserve(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1 });
 
-fadeEls.forEach(el => observer.observe(el));
+reveals.forEach(el => revealObserver.observe(el));
 
-// ===== FOOTER YEAR =====
-document.getElementById('footerYear').textContent = new Date().getFullYear();
+/* ===== STAT COUNTER ===== */
+function animateCount(el) {
+  const target = parseInt(el.dataset.target);
+  let current = 0;
+  const step = target / 40;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { el.textContent = target; clearInterval(timer); return; }
+    el.textContent = Math.floor(current);
+  }, 40);
+}
 
-// ===== FOOTER UPTIME COUNTER =====
-const start = Date.now();
-setInterval(() => {
-  const diff = Math.floor((Date.now() - start) / 1000);
-  const h = String(Math.floor(diff / 3600)).padStart(2, '0');
-  const m = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
-  const s = String(diff % 60).padStart(2, '0');
-  document.getElementById('uptime').textContent = `${h}:${m}:${s}`;
-}, 1000);
-
-// ===== LANGUAGE BAR ANIMATION =====
-const langFills = document.querySelectorAll('.lang-fill');
-
-const langObserver = new IntersectionObserver((entries) => {
+const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const target = entry.target;
-      const width = target.style.width;
-      target.style.width = '0%';
-      setTimeout(() => { target.style.width = width; }, 100);
-      langObserver.unobserve(target);
+      entry.target.querySelectorAll('.hstat-n').forEach(animateCount);
+      statsObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.3 });
+}, { threshold: 0.5 });
 
-langFills.forEach(el => langObserver.observe(el));
+const statsEl = document.querySelector('.hero-stats');
+if (statsEl) statsObserver.observe(statsEl);
+
+/* ===== FOOTER YEAR ===== */
+const yearEl = document.getElementById('footerYear');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ===== UPTIME COUNTER ===== */
+const startTime = Date.now();
+const uptimeEl = document.getElementById('uptime');
+if (uptimeEl) {
+  setInterval(() => {
+    const diff = Math.floor((Date.now() - startTime) / 1000);
+    const h = String(Math.floor(diff / 3600)).padStart(2, '0');
+    const m = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+    const s = String(diff % 60).padStart(2, '0');
+    uptimeEl.textContent = `${h}:${m}:${s}`;
+  }, 1000);
+}
