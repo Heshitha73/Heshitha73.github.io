@@ -1,367 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Heshitha Prabhashana — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
+  <title>Heshitha Prabhashana — Cybersecurity</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
-    <div class="nav-brand">&lt;Heshitha Prabhashana/&gt;</div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    <a href="#home" class="nav-logo">HP<span class="logo-dot">.</span></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">./about</a></li>
-      <li><a href="#skills">./skills</a></li>
-      <li><a href="#education">./education</a></li>
-      <li><a href="#certificates">./certificates</a></li>
-      <li><a href="#projects">./projects</a></li>
-      <li><a href="#contact">./contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certificates">Certs</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeToggle" title="Toggle theme">
+        <span id="themeIcon">☀️</span>
+      </button>
+      <button class="hamburger" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero" id="home">
-  <div class="hero-content">
-
-    <div class="hero-text">
-      <div class="hero-status">&#9632; SYSTEM ONLINE</div>
-      <p class="hero-role">CYBER SECURITY UNDERGRADUATE</p>
-      <h1 class="hero-name">Heshitha<br/>Prabhashana</h1>
-      <p class="hero-terminal">root@cybersec:~$ <span id="typewriter"></span><span class="cursor">_</span></p>
-      <p class="hero-bio">
-        Aspiring cybersecurity professional with a passion for cloud security, ethical hacking,
-        secure systems design, and building tools that protect the digital world.
-      </p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn btn-outline">VIEW PROJECTS</a>
-        <a href="#contact" class="btn btn-ghost">CONTACT ME</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">3+</span>
-          <span class="stat-label">PROJECTS</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">3+</span>
-          <span class="stat-label">CERTS</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">5+</span>
-          <span class="stat-label">SKILLS</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">2</span>
-          <span class="stat-label">LANGUAGES</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-photo">
-      <div class="hero-photo-frame frame-glow">
-        <img src="profile.jpg" alt="Heshitha Prabhashana" />
-      </div>
-    </div>
-
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mm-link">About</a></li>
+      <li><a href="#skills" class="mm-link">Skills</a></li>
+      <li><a href="#education" class="mm-link">Education</a></li>
+      <li><a href="#certificates" class="mm-link">Certificates</a></li>
+      <li><a href="#projects" class="mm-link">Projects</a></li>
+      <li><a href="#contact" class="mm-link">Contact</a></li>
+    </ul>
   </div>
-</section>
 
-  <!-- ========== ABOUT ========== -->
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-glow g1"></div>
+    <div class="hero-glow g2"></div>
+    <div class="hero-glow g3"></div>
+    <div class="noise"></div>
+
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-pill">
+          <span class="pill-dot"></span>
+          Available for Internships
+        </div>
+        <h1 class="hero-heading">
+          <span class="line">Heshitha</span>
+          <span class="line grad-text">Prabhashana</span>
+        </h1>
+        <p class="hero-sub">
+          Cybersecurity Undergraduate &amp; Ethical Hacker
+        </p>
+        <div class="typewriter-wrap">
+          <span class="tw-prefix">~/</span>
+          <span id="tw"></span>
+          <span class="tw-cursor">|</span>
+        </div>
+        <p class="hero-bio">
+          Aspiring cybersecurity professional with a passion for cloud security, ethical hacking, secure systems design, and building tools that protect the digital world.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="cta-primary mag-btn">
+            <span>View Projects</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="cta-ghost mag-btn">Get in Touch</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat">
+            <div class="hstat-num-row"><span class="hstat-n" data-target="3">0</span><span class="hstat-plus">+</span></div>
+            <span class="hstat-l">Projects</span>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <div class="hstat-num-row"><span class="hstat-n" data-target="4">0</span></div>
+            <span class="hstat-l">Certifications</span>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <div class="hstat-num-row"><span class="hstat-n" data-target="10">0</span><span class="hstat-plus">+</span></div>
+            <span class="hstat-l">Skills</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="photo-wrap">
+          <div class="photo-ring-outer">
+            <div class="photo-ring-inner">
+              <img src="profile.jpg" alt="Heshitha Prabhashana" class="hero-img"/>
+            </div>
+          </div>
+          <div class="float-badge b1">🎓 Undergraduate</div>
+          <div class="float-badge b2">⚔️ Ethical Hacking</div>
+          <div class="float-badge b3">💼 Intern</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="mouse-icon"><div class="mouse-wheel"></div></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
   <section class="section" id="about">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">$</span> cat about.txt</h2>
+      <div class="section-tag reveal">01 &mdash; About</div>
       <div class="about-grid">
-        <div class="about-text">
-          <p>
-            Hello! I'm <span class="highlight">Heshitha Prabhashana</span>, a cybersecurity student passionate about
-            protecting systems and people in the digital world. I specialize in network security,
-            ethical hacking, and building secure applications.
-          </p>
-          <p>
-            I'm currently pursuing my undergraduate degree while working on real-world security
-            projects, CTF competitions, and earning industry certifications.
-          </p>
-          
-
-          <div class="languages">
-            <h3 class="lang-title">Languages</h3>
-              <div class="lang-list">
-
-                <div class="lang-item">
-                  <img class="lang-flag" src="https://flagcdn.com/w40/gb.png" alt="UK Flag">
-                    <div class="lang-info">
-                      <span class="lang-name">English</span>
-                        <span class="lang-level">Intermediate</span>
-                    </div>
-                  <div class="lang-bar">
-                    <div class="lang-fill" style="width: 60%"></div>
-                  </div>
-                </div>
-
-                <div class="lang-item">
-                  <img class="lang-flag" src="https://flagcdn.com/w40/lk.png" alt="Sri Lanka Flag">
-                    <div class="lang-info">
-                      <span class="lang-name">Sinhala</span>
-                        <span class="lang-level">Fluent</span>
-                    </div>
-                    <div class="lang-bar">
-                      <div class="lang-fill" style="width: 95%"></div>
-                    </div>
-                </div>
-
-      </div>
-    </div>
-          <a href="Curriculum Vitae.pdf" class="btn btn-outline" download>DOWNLOAD CV</a>
+        <div class="about-img-col reveal">
+          <div class="about-photo-wrap">
+            <img src="profile.jpg" alt="Heshitha"/>
+            <div class="about-photo-deco"></div>
+            <div class="about-photo-badge">
+              <span>🎓</span>
+              <span>BSc Cybersecurity</span>
+            </div>
+          </div>
         </div>
-        
+        <div class="about-content reveal">
+          <h2 class="section-h">Securing systems.<br/><em>Protecting people.</em></h2>
+          <p>Hello! I'm <strong>Heshitha Prabhashana</strong>, a cybersecurity undergraduate based in Ruwanwella, Sri Lanka. I specialize in network security, ethical hacking, and building secure applications.</p>
+          <p>I enjoy CTF competitions, cloud security research, and contributing to open-source security tools. Currently seeking internship opportunities to apply my skills in the real world.</p>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-key">📍 Location</span>
+              <span>Ruwanwella, Sri Lanka</span>
+            </div>
+            <div class="info-item">
+              <span class="info-key">📧 Email</span>
+              <a href="mailto:heshithaprabhashana@gmail.com">heshithaprabhashana@gmail.com</a>
+            </div>
+            <div class="info-item">
+              <span class="info-key">📞 Phone</span>
+              <a href="tel:+94764237632">+94 76 423 7632</a>
+            </div>
+            <div class="info-item">
+              <span class="info-key">🟢 Status</span>
+              <span class="open-badge">Open to Work</span>
+            </div>
+          </div>
+          <a href="Curriculum Vitae.pdf" class="cta-primary mag-btn" download>
+            <span>Download CV</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== SKILLS ========== -->
-  <section class="section section-alt" id="skills">
+  <!-- ===== SKILLS (BENTO GRID) ===== -->
+  <section class="section section-dark" id="skills">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">$</span> ls skills/</h2>
-      <div class="skills-grid">
-        
-        <div class="skill-card">
-          <div class="skill-icon">&#128295;</div>
+      <div class="section-tag reveal">02 &mdash; Skills</div>
+      <div class="bento-grid">
+        <div class="bento-card b-large reveal" style="--ac:#7c3aed">
+          <div class="bento-icon">🛡️</div>
+          <h3>Network Security</h3>
+          <p>Firewalls, IDS/IPS, VPN, packet analysis and traffic monitoring at scale.</p>
+          <div class="bento-tags"><span>Wireshark</span><span>Nmap</span></div>
+          <div class="bento-glow"></div>
+        </div>
+        <div class="bento-card reveal" style="--ac:#ec4899">
+          <div class="bento-icon">⚔️</div>
           <h3>Ethical Hacking</h3>
-          <p>Penetration testing | vulnerability assessment | Metasploit</p>
+          <p>Penetration testing &amp; vulnerability assessment.</p>
+          <div class="bento-tags"><span>Metasploit</span></div>
+          <div class="bento-glow"></div>
         </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">&#128187;</div>
+        <div class="bento-card reveal" style="--ac:#0ea5e9">
+          <div class="bento-icon">☁️</div>
+          <h3>Cloud Security</h3>
+          <p>AWS &amp; cloud threat modeling.</p>
+          <div class="bento-tags"><span>AWS</span></div>
+          <div class="bento-glow"></div>
+        </div>
+        <div class="bento-card reveal" style="--ac:#10b981">
+          <div class="bento-icon">💻</div>
           <h3>Programming</h3>
-          <p>Python | Java | SQL | OOP | HTML | CSS</p>
+          <p>Security automation &amp; scripting.</p>
+          <div class="bento-tags"><span>Python</span><span>JS</span></div>
+          <div class="bento-glow"></div>
         </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">&#128272;</div>
+        <div class="bento-card reveal" style="--ac:#f59e0b">
+          <div class="bento-icon">🔐</div>
           <h3>Cryptography</h3>
-          <p>Encryption algorithms | hash functions</p>
+          <p>Encryption algorithms and hash functions for secure communication.</p>
+          <div class="bento-tags"><span>SSL/TLS</span></div>
+          <div class="bento-glow"></div>
         </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">&#129309;</div>
+        <div class="bento-card b-wide reveal" style="--ac:#ef4444">
+          <div class="bento-icon">📊</div>
           <h3>Soft Skills</h3>
-          <p>Leadership | Problem Solving |Team Work | Time Management</p>
+          <div class="bento-tags"><span>Communication</span><span>Teamwork & Collaboration</span><span>Time Management</span><span>Problem-Solving & Critical Thinking</span></div>
+          <div class="bento-glow"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== EDUCATION ========== -->
+  <!-- ===== EDUCATION ===== -->
   <section class="section" id="education">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">$</span> cat education.log</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2024 – Present</span>
-            <h3>BSc (Hons) in IT specialized in Cyber Security</h3>
-            <p class="timeline-org">SLIIT, New Kandy Road, Malabe</p>
-            <p>Studying network security, ethical hacking, cryptography, and digital forensics.</p>
-            <p>Expected graduation: 2028.</p>
-          </div>
+      <div class="section-tag reveal">03 &mdash; Education</div>
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <div class="edu-year">2024 – Present</div>
+          <div class="edu-icon">🎓</div>
+          <h3>BSc (Hons) in Information Technology specialized in Cyber Security</h3>
+          <p class="edu-org">SLIIT - Malabe Campus</p>
+          <p>Network security, ethical hacking, cryptography, digital forensics.</p>
+          <p>Expected graduation: 2026</p>
+          <span class="edu-badge">Undergraduate</span>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2023</span>
-            <h3>G.C.E (A/L) Examination</h3>
-            <p class="timeline-org">Sivali Central College - Ratnapura</p>
-            <p>Completed A/Ls with 1Cs and 2Ss in Combined Mathematics, Physics and ICT.</p>
-          </div>
+        <div class="edu-card reveal">
+          <div class="edu-year">2023</div>
+          <div class="edu-icon">📚</div>
+          <h3>Advanced Level (A/L)</h3>
+          <p class="edu-org">Sivali Central College - Ratnapura</p>
+          <p>Completed with one C and two S passes in Mathematics, Physics, and ICT.</p>
+          <span class="edu-badge">Secondary</span>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2020</span>
-            <h3>G.C.E (O/L) Examination</h3>
-            <p class="timeline-org">Sivali Central College - Ratnapura</p>
-            <p>Completed O/Ls with 7As and 2Bs.</p>
-          </div>
+        <div class="edu-card reveal">
+          <div class="edu-year">2020</div>
+          <div class="edu-icon">📚</div>
+          <h3>Ordinary Level (O/L)</h3>
+          <p class="edu-org">Sivali Central College - Ratnapura</p>
+          <p>Completed with 7As and 2Bs.</p>
+          <span class="edu-badge">Secondary</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CERTIFICATES ========== -->
-  <section class="section section-alt" id="certificates">
+  <!-- ===== CERTIFICATES ===== -->
+  <section class="section section-dark" id="certificates">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">$</span> ls certificates/</h2>
-      <div class="cert-grid">
-
-        <div class="cert-card">
-          <div class="cert-badge">&#127941;</div>
-          <h3>Introduction to Cyber Security</h3>
-          <p>Cisco Networking Academy</p>
-          <span class="cert-year">2026</span>
+      <div class="section-tag reveal">04 &mdash; Certifications</div>
+      <div class="cert-list">
+        <div class="cert-row reveal" style="--cc:#7c3aed">
+          <div class="cert-num">01</div>
+          <div class="cert-icon-wrap">🏆</div>
+          <div class="cert-details">
+            <h3>Introduction to Cyber Security</h3>
+            <p>Cisco Network Academy</p>
+          </div>
+          <span class="cert-yr">2026</span>
+          <div class="cert-bar"></div>
         </div>
-        
-        <div class="cert-card">
-          <div class="cert-badge">&#127941;</div>
-          <h3>Web Application Development</h3>
-          <p>Webcomms Global (PVT) Ltd and LK Domain Registry</p>
-          <span class="cert-year">2023</span>
+        <div class="cert-row reveal" style="--cc:#f59e0b">
+          <div class="cert-num">02</div>
+          <div class="cert-icon-wrap">🏆</div>
+          <div class="cert-details">
+            <h3>Web Application Development</h3>
+            <p>Webcomms Global (PVT) Ltd and LK Domain Registry</p>
+          </div>
+          <span class="cert-yr">2023</span>
+          <div class="cert-bar"></div>
         </div>
-
-        <div class="cert-card">
-          <div class="cert-badge">&#127941;</div>
-          <h3>Three month English Course</h3>
-          <p>WOW English Academy (PVT) Ltd</p>
-          <span class="cert-year">2024</span>
+        <div class="cert-row reveal" style="--cc:#0ea5e9">
+          <div class="cert-num">03</div>
+          <div class="cert-icon-wrap">🏆</div>
+          <div class="cert-details">
+            <h3>Three month English Course</h3>
+            <p>WOW English Academy (PVT) Ltd</p>
+          </div>
+          <span class="cert-yr">2024</span>
+          <div class="cert-bar"></div>
         </div>
-
-        <div class="cert-card">
-          <div class="cert-badge">&#127941;</div>
-          <h3>Adobe Photoshop Course</h3>
-          <p>School based I.C.T. Training Programme</p>
-          <span class="cert-year">2019</span>
+        <div class="cert-row reveal" style="--cc:#ec4899">
+          <div class="cert-num">04</div>
+          <div class="cert-icon-wrap">🏆</div>
+          <div class="cert-details">
+            <h3>Adobe Photoshop Course</h3>
+            <p>School based ICT Training Program</p>
+          </div>
+          <span class="cert-yr">2019</span>
+          <div class="cert-bar"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== PROJECTS ========== -->
+  <!-- ===== PROJECTS ===== -->
   <section class="section" id="projects">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">$</span> ls projects/</h2>
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">&#127793;</span>
-            <span class="project-tag">Arduino</span>
+      <div class="section-tag reveal">05 &mdash; Projects</div>
+      <div class="proj-grid">
+        <div class="proj-card reveal">
+          <div class="proj-top" style="--pc:#ec4899">
+            <span class="proj-emoji">🌱</span>
+            <div class="proj-tags"><span>Arduino</span><span>C</span></div>
           </div>
-          <h3>IoT based Automation Greenhouse</h3>
-          <p>An automated green house with watering, ligtning and temperature controling.</p>
-          <div class="project-links">
-            <a href="https://github.com/Heshitha73/GreenHouse" class="project-link">GitHub &#8599;</a>
-            
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">&#128649;</span>
-            <span class="project-tag">HTML,CSS,JS,SQL</span>
-          </div>
-          <h3>Web-based Train Scheduling and Ticketing System</h3>
-          <p>Developed web based train scheduling and ticketing system with main five management systems.</p>
-          <div class="project-links">
-            <a href="https://github.com/IT24103866/Train_Ticket_Booking_System" class="project-link">GitHub &#8599;</a>
+          <div class="proj-body">
+            <h3>IoT Based Green House Automation System</h3>
+            <p>An automated green house with watering, ligtning and temperature controling.</p>
+            <div class="proj-links">
+              <a href="https://github.com/Heshitha73/GreenHouse" class="proj-link">GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
           </div>
         </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">&#128138;</span>
-            <span class="project-tag">OOP,DSA</span>
+        <div class="proj-card reveal">
+          <div class="proj-top" style="--pc:#ec4899">
+            <span class="proj-emoji">🚉</span>
+            <div class="proj-tags"><span>Java</span><span>MySQL</span></div>
           </div>
-          <h3>Online Medical Store</h3>
-          <p>The project focuses on the Medicine Module, enabling efficient management of medicine records including adding, updating, deleting, and searching items.</p>
-          <div class="project-links">
-            <a href="https://github.com/Chamidu2k04/OnlineMedicalStore_Group230/tree/medecine-module" class="project-link">GitHub &#8599;</a>
+          <div class="proj-body">
+            <h3>Web-based Train Scheduling and Ticketing System</h3>
+            <p>Developed web based train scheduling and ticketing system with main five management systems.</p>
+            <div class="proj-links">
+              <a href="https://github.com/IT24103866/Train_Ticket_Booking_System" class="proj-link">GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
           </div>
         </div>
-        
+        <div class="proj-card reveal">
+          <div class="proj-top" style="--pc:#0ea5e9">
+            <span class="proj-emoji">💊</span>
+            <div class="proj-tags"><span>OOP</span><span>DSA</span></div>
+          </div>
+          <div class="proj-body">
+            <h3>Online Medical Store</h3>
+            <p>The project focuses on the Medicine Module, enabling efficient management of medicine records including adding, updating, deleting, and searching items.</p>
+            <div class="proj-links">
+              <a href="https://github.com/Chamidu2k04/OnlineMedicalStore_Group230/tree/medecine-module" class="proj-link">GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+          </div>
+        </div>
         
       </div>
     </div>
   </section>
 
-  <!-- ========== CONTACT ========== -->
-  <section class="section section-alt" id="contact">
+  <!-- ===== CONTACT ===== -->
+  <section class="section" id="contact">
     <div class="container">
-      <h2 class="section-title"><span class="prompt">$</span> ./contact.sh</h2>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <p class="contact-intro">Let's connect! I'm open to internships, collaborations, and cybersecurity discussions.</p>
-          <ul class="contact-list">
+      <div class="section-tag reveal">06 &mdash; Contact</div>
+      <div class="contact-wrap">
+        <div class="contact-left reveal">
+          <h2 class="section-h">Let's build<br/><em>something great.</em></h2>
+          <p>Open to internships, collaborations and cyber security discussions. Reach out anytime!</p>
+          <ul class="contact-items">
             <li>
-              <span class="contact-icon">&#128222;</span>
-              <a href="tel:+94764237632">+94 76 423 7632</a>
+              <a href="tel:+94764237632" class="contact-item">
+                <div class="ci-icon">📞</div>
+                <div class="ci-text">
+                  <span>Phone</span>
+                  <strong>+94 76 423 7632</strong>
+                </div>
+                <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </li>
             <li>
-              <span class="contact-icon">📧</span>
-              <a href="mailto:heshithaprabhashana@gmail.com">heshithaprabhashana@gmail.com</a>
+              <a href="mailto:heshithaprabhashana@gmail.com?subject=Portfolio%20Inquiry" class="contact-item">
+                <div class="ci-icon">✉️</div>
+                <div class="ci-text">
+                  <span>Email</span>
+                  <strong>heshithaprabhashana@gmail.com</strong>
+                </div>
+                <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </li>
             <li>
-              <span class="contact-icon">&#128279;</span>
-              <a href="https://linkedin.com/in/heshitha-prabhashana-5ab341319" target="_blank">linkedin.com/in/heshitha-prabhashana-5ab341319</a>
+              <a href="https://linkedin.com/in/heshitha-prabhashana-5ab341319" target="_blank" class="contact-item">
+                <div class="ci-icon">🔗</div>
+                <div class="ci-text">
+                  <span>LinkedIn</span>
+                  <strong>heshitha-prabhashana</strong>
+                </div>
+                <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </li>
             <li>
-              <span class="contact-icon">&#128030;</span>
-              <a href="https://github.com/Heshitha73" target="_blank">github.com/Heshitha73</a>
-            </li>
-            <li>
-              <span class="contact-icon">&#128205;</span>
-              <span>Ruwanwella, Sabaragamuwa Province, Sri Lanka</span>
+              <a href="https://github.com/Heshitha73" target="_blank" class="contact-item">
+                <div class="ci-icon">🐙</div>
+                <div class="ci-text">
+                  <span>GitHub</span>
+                  <strong>Heshitha73</strong>
+                </div>
+                <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </li>
           </ul>
         </div>
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/heshithaprabhashana@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New message from your Portfolio!" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://heshitha73.github.io/#contact" />
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-outline">SEND MESSAGE &#8250;</button>
-        </form>
+        <div class="contact-right reveal">
+          <form class="contact-form" id="contactForm"
+            action="https://formsubmit.co/heshithaprabhashana@gmail.com"
+            method="POST">
+            <input type="hidden" name="_subject" value="New Portfolio Message!"/>
+            <input type="hidden" name="_captcha" value="false"/>
+            <input type="hidden" name="_next" value="https://heshitha73.github.io/#contact"/>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Your name" required/>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your@email.com" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" name="subject" placeholder="Project collaboration..."/>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="cta-primary mag-btn full-w">
+              <span>Send Message</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
-
-  <!-- Top row: logo + nav links -->
-  <div class="footer-top">
-    <div class="footer-brand">&lt;HESHITHA/&gt;</div>
-    <ul class="footer-links">
-      <li><a href="#about">./about</a></li>
-      <li><a href="#skills">./skills</a></li>
-      <li><a href="#education">./education</a></li>
-      <li><a href="#certificates">./certificates</a></li>
-      <li><a href="#projects">./projects</a></li>
-      <li><a href="#contact">./contact</a></li>
-    </ul>
-  </div>
-
-
-  <!-- Status bar -->
-  <div class="footer-status">
-    <span class="status-dot"></span>
-    <span>ALL SYSTEMS NOMINAL</span>
-    <span class="footer-divider">|</span>
-    <span>UPTIME: <span id="uptime">00:00:00</span></span>
-    <span class="footer-divider">|</span>
-    <span>LOCATION: RUWANWELLA, SRI LANKA</span>
-  </div>
-
-  <!-- Bottom row: copyright -->
-  <div class="footer-bottom">
-    <span>&#47;&#47; &copy; <span id="footerYear"></span> Heshitha Prabhashana. All rights reserved.</span>
-    <span>Built with <span class="highlight">&#10084;</span> &amp; lots of terminal sessions.</span>
-  </div>
-
-</footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">HP<span class="logo-dot">.</span></a>
+          <p>Cybersecurity Undergraduate<br/>Ruwanwella, Sri Lanka</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://github.com/Heshitha73" target="_blank">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/heshitha-prabhashana-5ab341319" target="_blank">LinkedIn</a></li>
+            <li><a href="mailto:heshithaprabhashana@gmail.com">Email</a></li>
+            <li><a href="tel:+94764237632">Phone</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Status</h4>
+          <div class="footer-status">
+            <span class="status-dot"></span>
+            <span>All Systems Nominal</span>
+          </div>
+          <div class="footer-uptime">
+            ⏱ Session: <span id="uptime">00:00:00</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="footerYear"></span> Heshitha Prabhashana. All rights reserved.</span>
+        <a href="#home" class="back-top">
+          Back to top
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
