@@ -1,4 +1,4 @@
-# 🛡️ Heshitha Prabhashana — Cybersecurity Portfolio
+# 🛡️ Heshitha Prabhashana — Portfolio
 
 > Personal portfolio website built with HTML, CSS, and JavaScript.  
 > Live at: [heshitha73.github.io](https://heshitha73.github.io)
