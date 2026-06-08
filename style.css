@@ -507,8 +507,6 @@ body.light .float-badge{background:rgba(255,255,255,0.95);}
   grid-template-columns:420px 1fr;
   gap:80px;align-items:start;
 }
-
-.about-img-col{}
 .about-photo-wrap{
   position:relative;
   border-radius:var(--r2);overflow:visible;
