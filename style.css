@@ -373,12 +373,13 @@ body.light .navbar.scrolled{background:rgba(248,248,255,0.85);}
 .hstat-sep{width:1px;height:36px;background:var(--border2);}
 
 /* ===== HERO PHOTO ===== */
-.hero-right{flex-shrink:0;}
+.hero-right{flex-shrink:0;overflow:visible;padding:20px 140px 20px 140px;}
 
 .photo-wrap{
   position:relative;
   width:300px;height:300px;
   display:flex;align-items:center;justify-content:center;
+  overflow:visible;
 }
 
 .photo-ring-outer{
@@ -420,21 +421,24 @@ body.light .navbar.scrolled{background:rgba(248,248,255,0.85);}
 
 .float-badge{
   position:absolute;
-  background:rgba(26,26,46,0.9);
+  background:rgba(26,26,46,0.92);
   backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   border:1px solid var(--border2);
   border-radius:99px;
-  padding:8px 16px;
-  font-size:12px;font-weight:600;
+  padding:9px 18px;
+  font-size:13px;font-weight:600;
   color:var(--text);
   white-space:nowrap;
+  z-index:10;
   animation:float 3s ease-in-out infinite;
+  pointer-events:none;
 }
-body.light .float-badge{background:rgba(255,255,255,0.9);}
+body.light .float-badge{background:rgba(255,255,255,0.95);}
 
-.b1{top:10%;left:-10%;animation-delay:0s;}
-.b2{bottom:10%;right:-8%;animation-delay:1s;}
-.b3{bottom:25%;left:-15%;animation-delay:2s;}
+.b1{top:-10px;left:-130px;animation-delay:0s;}
+.b2{bottom:30px;right:-130px;animation-delay:1s;}
+.b3{bottom:-10px;left:-120px;animation-delay:2s;}
 
 @keyframes float{
   0%,100%{transform:translateY(0);}
