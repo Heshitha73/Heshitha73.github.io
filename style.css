@@ -922,7 +922,7 @@ body.light .float-badge{background:rgba(255,255,255,0.9);}
   .hamburger{display:flex;}
 
   .hero{
-    padding:90px 20px 80px;
+    padding:90px 20px 140px;
     overflow:hidden;
   }
 
@@ -942,10 +942,11 @@ body.light .float-badge{background:rgba(255,255,255,0.9);}
   }
 
   .hero-heading{
-    font-size:clamp(1.9rem,10vw,2.8rem);
+    font-size:8vw;
     letter-spacing:-0.5px;
     width:100%;
-    overflow:hidden;
+    word-break:keep-all;
+    overflow:visible;
   }
 
   .hero-bio{
@@ -962,6 +963,13 @@ body.light .float-badge{background:rgba(255,255,255,0.9);}
   .hero-stats{justify-content:center;gap:16px;}
   .hstat-n{font-size:24px;}
   .hstat-plus{font-size:18px;}
+
+  /* fix scroll hint so it doesn't overlap stats */
+  .scroll-hint{
+    bottom:16px;
+    gap:6px;
+  }
+  .scroll-hint span{font-size:10px;}
 
   .container{padding:0 20px;}
   .section{padding:72px 0;}
@@ -983,10 +991,10 @@ body.light .float-badge{background:rgba(255,255,255,0.9);}
 }
 
 @media(max-width:600px){
-  .hero{padding:80px 16px 70px;}
+  .hero{padding:80px 16px 130px;}
 
   .hero-heading{
-    font-size:clamp(1.7rem,9vw,2.4rem);
+    font-size:8vw;
   }
 
   .hero-pill{font-size:12px;padding:5px 14px;}
@@ -1020,4 +1028,11 @@ body.light .float-badge{background:rgba(255,255,255,0.9);}
   .contact-form{padding:20px 16px;}
   .cert-row{padding:14px 12px;gap:10px;}
   .cert-num{display:none;}
+}
+
+/* extra small phones */
+@media(max-width:380px){
+  .hero-heading{font-size:7.5vw;}
+  .hero-stats{gap:8px;}
+  .hstat-sep{height:24px;}
 }
