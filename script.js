@@ -84,7 +84,7 @@ themeBtn.addEventListener('click', () => {
 });
 
 /* ===== TYPEWRITER ===== */
-const lines = ['whoami',  'cybersec_student', 'ethical_hacker', 'intern'];
+const lines = ['whoami', 'ethical_hacker', 'cloud_security', 'ctf_player', 'cybersec_student'];
 let li = 0, ci = 0, deleting = false;
 const twEl = document.getElementById('tw');
 
@@ -154,7 +154,13 @@ const statsObserver = new IntersectionObserver((entries) => {
 const statsEl = document.querySelector('.hero-stats');
 if (statsEl) statsObserver.observe(statsEl);
 
-/* ===== FOOTER YEAR ===== */
+/* ===== SCROLL HINT HIDE ===== */
+const scrollHint = document.querySelector('.scroll-hint');
+window.addEventListener('scroll', () => {
+  if (scrollHint) {
+    scrollHint.classList.toggle('hidden', window.scrollY > 80);
+  }
+});
 const yearEl = document.getElementById('footerYear');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
