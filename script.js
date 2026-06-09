@@ -84,7 +84,7 @@ themeBtn.addEventListener('click', () => {
 });
 
 /* ===== TYPEWRITER ===== */
-const lines = ['whoami', 'ethical_hacker', 'cloud_security', 'ctf_player', 'cybersec_student'];
+const lines = ['whoami', 'cybersec_student', 'ethical_hacker', 'intern'];
 let li = 0, ci = 0, deleting = false;
 const twEl = document.getElementById('tw');
 
