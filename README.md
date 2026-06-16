@@ -1,6 +1,6 @@
 # 🛡️ Heshitha Prabhashana — Portfolio
 
-> Personal portfolio website built with HTML, CSS, and JavaScript.  
+> Personal portfolio website built with HTML, CSS and JavaScript.  
 > Live at: [heshitha73.github.io](https://heshitha73.github.io)
 
 ---
@@ -8,7 +8,7 @@
 ## 📌 About
 
 This is my personal cybersecurity portfolio website showcasing my skills,
-education, certifications, and projects. Built with a terminal/hacker aesthetic
+education, certifications and projects. Built with a terminal/hacker aesthetic
 using pure HTML, CSS, and JavaScript — no frameworks required.
 
 ---
@@ -31,7 +31,7 @@ my-portfolio/
  - index.html ---- # Main HTML structure
  - style.css ----- # All styling and animations
  - script.js ----- # JavaScript interactions
- - photo.jpg ----- # Profile photo
+ - profile.jpg ----- # Profile photo
  - README.md ----- # Project documentation
 
 ---
