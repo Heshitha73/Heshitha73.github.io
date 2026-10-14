@@ -1,4 +1,4 @@
-# 🛡️ Heshitha Prabhashana — Portfolio
+# 🛡️ Heshitha Prabhashana - Portfolio
 
 > Personal portfolio website built with HTML, CSS and JavaScript.  
 > Live at: [heshitha73.github.io](https://heshitha73.github.io)
@@ -9,7 +9,7 @@
 
 This is my personal cybersecurity portfolio website showcasing my skills,
 education, certifications and projects. Built with a terminal/hacker aesthetic
-using pure HTML, CSS, and JavaScript — no frameworks required.
+using pure HTML, CSS, and JavaScript - no frameworks required.
 
 ---
 
@@ -17,7 +17,7 @@ using pure HTML, CSS, and JavaScript — no frameworks required.
 
 - Terminal-style dark theme with green neon accents
 - Typewriter animation in the hero section
-- Responsive design — works on all screen sizes
+- Responsive design - works on all screen sizes
 - Animated profile photo with glowing ring frame
 - Scroll fade-in animations
 - Working contact form via FormSubmit
@@ -41,10 +41,7 @@ my-portfolio/
 | Platform | Link |
 |---|---|
 | Email | heshithaprabhashana@gmail.com |
-| LinkedIn | linkedin.com/in/heshitha-prabhashana-5ab341319 |
-| GitHub | github.com/Heshitha73 |
+| LinkedIn | www.linkedin.com/in/heshitha-prabhashana-5ab341319 |
+| GitHub | https://github.com/Heshitha73 |
 | Phone | +94 76 423 7632 |
 
----
-
-*// All systems nominal ■*
