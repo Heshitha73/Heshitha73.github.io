@@ -202,4 +202,66 @@ if (backToTop && hero) {
 }
 
 
+// =====================================
+// MOBILE NAVIGATION MENU
+// =====================================
+
+const menuToggle = document.getElementById("menuToggle");
+const mobileNav = document.getElementById("mobileNav");
+
+if (menuToggle && mobileNav) {
+
+  function setMenuOpen(isOpen) {
+    mobileNav.classList.toggle("open", isOpen);
+    menuToggle.classList.toggle("active", isOpen);
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mobileNav.classList.contains("open");
+    setMenuOpen(!isOpen);
+  });
+
+  // Close menu after clicking a navigation link
+  mobileNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      setMenuOpen(false);
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", event => {
+    if (
+      !menuToggle.contains(event.target) &&
+      !mobileNav.contains(event.target)
+    ) {
+      setMenuOpen(false);
+    }
+  });
+
+  // Close using Escape
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      setMenuOpen(false);
+    }
+  });
+
+  // Reset when switching to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 820) {
+      setMenuOpen(false);
+    }
+  });
+}
+
+
 })();
