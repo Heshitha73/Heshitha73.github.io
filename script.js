@@ -128,44 +128,7 @@ function updateThemeButton() {
     yearElement.textContent = new Date().getFullYear();
   }
 
-  // =====================================
-  // 4. CONTACT FORM
-  // =====================================
-
-  const contactForm = document.getElementById("form");
-
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const name = contactForm.elements["name"].value.trim();
-      const email = contactForm.elements["email"].value.trim();
-      const subject = contactForm.elements["subject"].value.trim();
-      const message = contactForm.elements["message"].value.trim();
-
-      if (!name || !email || !subject || !message) {
-        alert("Please fill in all fields.");
-        return;
-      }
-
-      const recipient = "heshithaprabhashana@gmail.com";
-
-      const emailBody =
-        "Name: " + name +
-        "\nEmail: " + email +
-        "\n\nMessage:\n" + message;
-
-      const mailtoLink =
-        "mailto:" + recipient +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(emailBody);
-
-      window.location.href = mailtoLink;
-    });
-  }
-
-
-
+  
 // ========================================
 // BACK TO TOP - MOBILE OPTIMIZED
 // ========================================
