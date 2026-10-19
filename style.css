@@ -500,3 +500,160 @@ html{scroll-padding-top:110px}
         transform: none;
     }
 }
+
+
+/* ========================================
+   MOBILE SCROLLING OPTIMIZATION
+======================================== */
+
+@media (max-width: 820px) {
+
+  /* Natural mobile scrolling */
+  html {
+    scroll-snap-type: none !important;
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
+
+  body {
+    overflow-x: clip;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Sticky navbar */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bar {
+    height: auto;
+    min-height: 64px;
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  /* Horizontal navigation scrolling */
+  nav {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav a {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Remove full-screen section snapping */
+  section {
+    min-height: auto !important;
+    scroll-snap-align: none !important;
+    padding: 65px 0;
+  }
+
+  .hero {
+    min-height: auto !important;
+    scroll-snap-align: none !important;
+    padding: 45px 0 65px;
+  }
+
+  /* Consistent content width */
+  .wrap {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* Prevent grid overflow */
+  .hero,
+  .about,
+  .contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card,
+  .skill,
+  .facts,
+  .contact form {
+    min-width: 0;
+  }
+
+  /* Comfortable spacing */
+  h2 {
+    margin-bottom: 18px;
+  }
+
+  .lead {
+    margin-bottom: 26px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  /* Better touch interactions */
+  .btn,
+  .theme,
+  .soc,
+  .back-to-top {
+    touch-action: manipulation;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed;
+    right: 18px;
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    z-index: 1100;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  section {
+    padding: 50px 0;
+  }
+
+  .hero {
+    padding: 30px 0 50px;
+  }
+
+  .wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+  }
+}
+
+/* Respect accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+}
