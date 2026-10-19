@@ -13,11 +13,30 @@
     return theme ? theme === "dark" : true;
   }
 
-  function updateThemeButton() {
-    if (themeBtn) {
-      themeBtn.textContent = isDark() ? "Light" : "Dark";
-    }
+  
+function updateThemeButton() {
+  if (!themeBtn) return;
+
+  const dark = isDark();
+  const themeLabel = themeBtn.querySelector(".theme-label");
+
+  // Update label without removing SVG icons
+  if (themeLabel) {
+    themeLabel.textContent = dark ? "Dark" : "Light";
   }
+
+  // Accessibility
+  themeBtn.setAttribute(
+    "aria-label",
+    dark ? "Switch to light mode" : "Switch to dark mode"
+  );
+
+  themeBtn.setAttribute(
+    "title",
+    dark ? "Switch to light mode" : "Switch to dark mode"
+  );
+}
+
 
   try {
     const savedTheme = localStorage.getItem("theme");
