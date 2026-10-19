@@ -1007,3 +1007,34 @@ html[data-theme="light"] .theme-toggle {
         color: #0369a1;
     }
 }
+
+
+/* Contact form submission status */
+
+.form-status {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status.sending {
+  color: var(--muted);
+}
+
+.form-status.success {
+  color: #22c55e;
+}
+
+.form-status.error {
+  color: #ef4444;
+}
+
+#form button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
