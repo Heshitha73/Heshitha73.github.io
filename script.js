@@ -1,4 +1,3 @@
-
 (function () {
   "use strict";
 
@@ -147,46 +146,60 @@
   }
 
 
-// =====================================
-// BACK TO TOP BUTTON
-// =====================================
+
+// ========================================
+// BACK TO TOP - MOBILE OPTIMIZED
+// ========================================
 
 const backToTop = document.getElementById("backToTop");
-const heroSection = document.querySelector(".hero");
+const hero = document.querySelector(".hero");
 
-if (backToTop && heroSection) {
+if (backToTop && hero) {
+  let ticking = false;
 
-  function toggleBackToTop() {
+  function updateBackToTop() {
     const heroBottom =
-      heroSection.getBoundingClientRect().bottom;
+      hero.getBoundingClientRect().bottom;
 
-    // Show button after scrolling past hero
-    if (heroBottom <= 0) {
-      backToTop.classList.add("show");
-    } else {
-      backToTop.classList.remove("show");
+    const isVisible = heroBottom <= 0;
+
+    backToTop.classList.toggle("show", isVisible);
+    backToTop.setAttribute(
+      "aria-hidden",
+      String(!isVisible)
+    );
+
+    backToTop.tabIndex = isVisible ? 0 : -1;
+
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateBackToTop);
+      ticking = true;
     }
   }
 
-  window.addEventListener("scroll", toggleBackToTop, {
+  window.addEventListener("scroll", onScroll, {
     passive: true
   });
 
-  window.addEventListener("resize", toggleBackToTop);
+  window.addEventListener("resize", onScroll);
 
-  // Check initial scroll position
-  toggleBackToTop();
+  updateBackToTop();
 
-  // Smooth scroll to top
   backToTop.addEventListener("click", function () {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
     window.scrollTo({
       top: 0,
-      behavior: window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches ? "instant" : "smooth"
+      behavior: reducedMotion ? "auto" : "smooth"
     });
   });
-
 }
+
 
 })();
