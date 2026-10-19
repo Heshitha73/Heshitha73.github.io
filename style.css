@@ -722,3 +722,144 @@ html{scroll-padding-top:110px}
     }
 }
 
+
+/* =====================================
+   MOBILE HAMBURGER NAVIGATION
+===================================== */
+
+/* Desktop */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Mobile */
+@media (max-width: 820px) {
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        overflow: visible;
+    }
+
+    .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        position: relative;
+        min-height: 68px;
+        gap: 10px;
+    }
+
+    .logo {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .logo-name {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .nav-actions {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* Hamburger button */
+    .menu-toggle {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        cursor: pointer;
+        padding: 0;
+        color: var(--ink);
+    }
+
+    .menu-toggle span {
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 2px;
+        transition: transform .25s ease,
+                    opacity .25s ease;
+    }
+
+    /* Hamburger -> X */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Dropdown navigation */
+    #mobileNav {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        width: 100%;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+
+        padding: 12px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+
+        box-shadow: 0 16px 40px rgba(0, 0, 0, .18);
+
+        overflow: visible;
+        z-index: 1001;
+    }
+
+    #mobileNav.open {
+        display: flex;
+    }
+
+    #mobileNav a {
+        display: block;
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 9px;
+        text-decoration: none;
+        color: var(--ink);
+        font-size: 14px;
+        white-space: normal;
+    }
+
+    #mobileNav a:hover,
+    #mobileNav a:focus-visible {
+        background: var(--soft);
+        color: var(--accent);
+    }
+}
+
