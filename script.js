@@ -246,4 +246,75 @@ if (menuToggle && mobileNav) {
 }
 
 
+  // =====================================
+  // CONTACT FORM - AJAX SUBMISSION
+  // =====================================
+
+  const contactForm = document.getElementById("form");
+  const formStatus = document.getElementById("formStatus");
+
+  if (contactForm && formStatus) {
+    contactForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      if (!contactForm.reportValidity()) return;
+
+      const submitBtn = contactForm.querySelector(
+        'button[type="submit"]'
+      );
+
+      const originalHTML = submitBtn.innerHTML;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+
+      formStatus.textContent = "Sending your message...";
+      formStatus.className = "form-status sending";
+
+      try {
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+
+        const response = await fetch(
+          "https://formsubmit.co/ajax/heshithaprabhashana@gmail.com",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
+          }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || result.success === false ||
+            result.success === "false") {
+          throw new Error(result.message || "Submission failed");
+        }
+
+        formStatus.textContent =
+          "Message sent successfully! Thank you for contacting me.";
+
+        formStatus.className = "form-status success";
+
+        contactForm.reset();
+
+      } catch (error) {
+        console.error("Contact form error:", error);
+
+        formStatus.textContent =
+          "Failed to send message. Please try again.";
+
+        formStatus.className = "form-status error";
+
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHTML;
+      }
+    });
+  }
+
+
 })();
