@@ -1050,3 +1050,54 @@ body {
   background: var(--bg);
 }
 
+
+/* Email Copy Button */
+
+.copy-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  margin-left: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--accent);
+  font: 500 12px var(--sans);
+  cursor: pointer;
+  vertical-align: middle;
+  transition: border-color .2s, background .2s;
+}
+
+.copy-email:hover {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+
+.copy-email svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.copy-email.copied {
+  color: #22c55e;
+  border-color: #22c55e;
+}
+
+.copy-email:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .copy-email {
+    margin-left: 0;
+    margin-top: 6px;
+  }
+}
