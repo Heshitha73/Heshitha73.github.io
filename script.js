@@ -317,4 +317,36 @@ if (menuToggle && mobileNav) {
   }
 
 
+  // =====================================
+  // COPY EMAIL ADDRESS
+  // =====================================
+
+  document.querySelectorAll(".copy-email").forEach(button => {
+    button.addEventListener("click", async () => {
+      const email = button.dataset.email;
+      const label = button.querySelector("span");
+
+      if (!email || !label) return;
+
+      try {
+        await navigator.clipboard.writeText(email);
+
+        label.textContent = "Copied!";
+        button.classList.add("copied");
+
+        clearTimeout(button.copyTimer);
+
+        button.copyTimer = setTimeout(() => {
+          label.textContent = "Copy";
+          button.classList.remove("copied");
+        }, 2000);
+
+      } catch (error) {
+        console.error("Email copy failed:", error);
+        label.textContent = "Copy failed";
+      }
+    });
+  });
+
+
 })();
