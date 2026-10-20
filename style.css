@@ -1038,3 +1038,15 @@ html[data-theme="light"] .theme-toggle {
   opacity: 0.65;
   cursor: not-allowed;
 }
+
+
+/* Remove background grid texture and glow */
+
+body::before {
+  display: none !important;
+}
+
+body {
+  background: var(--bg);
+}
+
