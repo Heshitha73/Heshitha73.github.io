@@ -1101,3 +1101,42 @@ body {
     margin-top: 6px;
   }
 }
+
+
+/* =====================================
+   FIX MOBILE SECTION HEADING CUT OFF
+===================================== */
+
+@media (max-width: 820px) {
+
+  /* Space for sticky mobile navbar */
+  html {
+    scroll-padding-top: 115px !important;
+  }
+
+  /* Prevent section titles hiding under navbar */
+  section[id],
+  main[id] {
+    scroll-margin-top: 115px !important;
+  }
+
+  /* Ensure heading is fully visible */
+  section h2 {
+    scroll-margin-top: 115px;
+  }
+
+}
+
+/* Smaller mobile screens */
+@media (max-width: 480px) {
+
+  html {
+    scroll-padding-top: 125px !important;
+  }
+
+  section[id],
+  main[id] {
+    scroll-margin-top: 125px !important;
+  }
+
+}
