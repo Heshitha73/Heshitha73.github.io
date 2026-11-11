@@ -349,4 +349,68 @@ if (menuToggle && mobileNav) {
   });
 
 
+  // =====================================
+  // DYNAMIC NAVBAR SCROLL OFFSET
+  // =====================================
+
+  const siteHeader = document.querySelector("header");
+
+  function updateNavbarHeight() {
+    if (!siteHeader) return;
+
+    const height = Math.ceil(
+      siteHeader.getBoundingClientRect().height
+    );
+
+    document.documentElement.style.setProperty(
+      "--nav-height",
+      `${height + 8}px`
+    );
+  }
+
+  updateNavbarHeight();
+
+  window.addEventListener("resize", updateNavbarHeight);
+
+  if (siteHeader && "ResizeObserver" in window) {
+    const headerObserver = new ResizeObserver(
+      updateNavbarHeight
+    );
+    headerObserver.observe(siteHeader);
+  }
+
+  // Correct navigation position after clicking menu links
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener("click", function (event) {
+      const targetId = this.getAttribute("href");
+      const target = document.querySelector(targetId);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      updateNavbarHeight();
+
+      const headerHeight = siteHeader
+        ? siteHeader.getBoundingClientRect().height
+        : 65;
+
+      const targetTop =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        headerHeight -
+        8;
+
+      history.pushState(null, "", targetId);
+
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches ? "auto" : "smooth"
+      });
+    });
+  });
+
+
 })();
