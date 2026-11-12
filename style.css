@@ -1133,3 +1133,9 @@ main[id] {
     scroll-margin-top: 0 !important;
   }
 }
+
+/* Eased anchor animation is controlled by script.js; do not double-animate. */
+html { scroll-behavior: auto; scroll-snap-type: none; overscroll-behavior-y: auto; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
