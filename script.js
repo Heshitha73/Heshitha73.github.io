@@ -172,14 +172,7 @@ if (backToTop && hero) {
   updateBackToTop();
 
   backToTop.addEventListener("click", function () {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    window.scrollTo({
-      top: 0,
-      behavior: reducedMotion ? "auto" : "smooth"
-    });
+    smoothScrollTo(0);
   });
 }
 
@@ -379,38 +372,72 @@ if (menuToggle && mobileNav) {
     headerObserver.observe(siteHeader);
   }
 
-  // Correct navigation position after clicking menu links
-  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-    link.addEventListener("click", function (event) {
-      const targetId = this.getAttribute("href");
-      const target = document.querySelector(targetId);
+  // Smooth, eased scrolling for all in-page links (navbar, logo and CTAs).
+  // Do not intercept the user's mouse wheel / touch scrolling.
+  let activeScrollFrame = null;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-      if (!target) return;
+  function smoothScrollTo(destination) {
+    if (activeScrollFrame !== null) {
+      cancelAnimationFrame(activeScrollFrame);
+      activeScrollFrame = null;
+    }
 
-      event.preventDefault();
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const end = Math.min(Math.max(0, destination), maxScroll);
+    if (prefersReducedMotion.matches) {
+      window.scrollTo(0, end);
+      return;
+    }
 
-      updateNavbarHeight();
+    const start = window.scrollY;
+    const distance = end - start;
+    if (Math.abs(distance) < 2) return;
+    const duration = Math.min(850, Math.max(420, Math.abs(distance) * 0.35));
+    let startTime = null;
 
-      const headerHeight = siteHeader
-        ? siteHeader.getBoundingClientRect().height
-        : 65;
+    function frame(timestamp) {
+      if (startTime === null) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      window.scrollTo(0, start + distance * eased);
+      if (progress < 1) {
+        activeScrollFrame = requestAnimationFrame(frame);
+      } else {
+        activeScrollFrame = null;
+      }
+    }
 
-      const targetTop =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        headerHeight -
-        8;
+    activeScrollFrame = requestAnimationFrame(frame);
+  }
 
-      history.pushState(null, "", targetId);
-
-      window.scrollTo({
-        top: Math.max(0, targetTop),
-        behavior: window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches ? "auto" : "smooth"
-      });
-    });
+  // If a visitor starts manual scrolling, let their gesture take over immediately.
+  ["wheel", "touchstart", "keydown"].forEach(type => {
+    window.addEventListener(type, () => {
+      if (activeScrollFrame !== null) {
+        cancelAnimationFrame(activeScrollFrame);
+        activeScrollFrame = null;
+      }
+    }, { passive: true });
   });
 
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", function (event) {
+      const hash = this.getAttribute("href");
+      if (!hash || hash === "#") return;
+      const target = document.getElementById(hash.slice(1));
+      if (!target) return;
+      event.preventDefault();
+      updateNavbarHeight();
+      const headerHeight = siteHeader ? siteHeader.getBoundingClientRect().height : 65;
+      const targetTop = hash === "#home"
+        ? 0
+        : target.getBoundingClientRect().top + window.scrollY - headerHeight - 10;
+      history.pushState(null, "", hash);
+      smoothScrollTo(targetTop);
+    });
+  });
 
 })();
